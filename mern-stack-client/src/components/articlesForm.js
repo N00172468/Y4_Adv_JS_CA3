@@ -1,6 +1,7 @@
 import React, {useEffect, useState, Fragment} from 'react';
 
 import { 
+    Button,
     TextField,
     withStyles
  } from '@material-ui/core';
@@ -23,19 +24,28 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center'
+    },
+    postBtn: {
+        width: '97%'
     }
 });
 
 const ArticlesForm = ({classes, ...props}) => {
+    // Using "UseForm" component to call out reusable form operations:
     var {
         values,
         setValues,
         handleInputChange
     } = useForm(initialFieldValues);
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(values);
+    }
+
     return(
         // Back-ticks are used to be able to call multiple classes
-        <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`}>
+        <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
             <TextField
                 name="title"
                 variant="outlined"
@@ -55,6 +65,16 @@ const ArticlesForm = ({classes, ...props}) => {
                 value={values.content}
                 onChange={handleInputChange}
             />
+
+            <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                type="submit"
+                className={classes.postBtn}
+            >
+                Submit
+            </Button>
         </form>
     );
 };
