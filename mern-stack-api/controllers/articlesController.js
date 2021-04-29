@@ -4,7 +4,7 @@ var router = express.Router();
 var { Article } = require('../models/articles');
 
 router.get('/', (req, res)=>{
-    articles.find((err,docs)=>{
+    Article.find((err,docs)=>{
         if(!err) 
         res.send(docs);
         else
