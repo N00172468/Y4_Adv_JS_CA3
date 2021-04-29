@@ -11,3 +11,5 @@ router.get('/', (req, res)=>{
         console.log('Error while retrieving all records: ' + JSON.stringify(err, undefined, 2));
     });
 });
+
+module.exports = router;
