@@ -2,11 +2,12 @@ import React, {useEffect, useState, Fragment} from 'react';
 
 const useForm = (initialFieldValues) => {
     const [values, setValues] = useState(initialFieldValues);
+    const [errors, setErrors] = useState({}); // Returning empty object
     
     const handleInputChange = e => {
         const {name, value} = e.target
         setValues({
-            // ...value,
+            ...values,
             [name]: value
         });
     }
@@ -14,6 +15,8 @@ const useForm = (initialFieldValues) => {
     return {
         values,
         setValues,
+        errors,
+        setErrors,
         handleInputChange
     };
 }

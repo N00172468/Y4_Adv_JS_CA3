@@ -31,10 +31,17 @@ const styles = theme => ({
 });
 
 const ArticlesForm = ({classes, ...props}) => {
+    // Validation Function:
+    const validate = () => {
+        
+    };
+
     // Using "UseForm" component to call out reusable form operations:
     var {
         values,
         setValues,
+        errors,
+        setErrors,
         handleInputChange
     } = useForm(initialFieldValues);
 
