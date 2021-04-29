@@ -5,7 +5,11 @@ import * as actions from '../actions/article';
 
 import { 
     Grid, 
+    List, 
+    ListItem, 
+    ListItemText, 
     Paper,
+    Typography,
     withStyles 
 } from '@material-ui/core';
 
@@ -36,7 +40,25 @@ const Articles = ({classes, ...props}) => {
 
             <Grid item xs={7}>
                 <Paper className={classes.paper}>
-                    <div>List of Articles</div>
+                    <List>
+                        {
+                            props.articleList.map((record, index) => {
+                                return(
+                                    <ListItem>
+                                        <ListItemText>
+                                            <Typography variant="h5">
+                                                { record.title }
+                                            </Typography>
+
+                                            <div>
+                                                { record.content }
+                                            </div>
+                                        </ListItemText>
+                                    </ListItem>
+                                )
+                            })
+                        }
+                    </List>
                 </Paper>
             </Grid>
         </Grid>
