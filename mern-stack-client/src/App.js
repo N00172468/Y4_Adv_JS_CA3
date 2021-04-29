@@ -3,7 +3,11 @@ import './App.css';
 import { Provider } from 'react-redux';
 import { store } from './actions/store'; 
 
-import {Container, AppBar, Typography } from '@material-ui/core';
+import {
+  Container, 
+  AppBar, 
+  Typography 
+} from '@material-ui/core';
 
 import Articles from './components/articles';
 

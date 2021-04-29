@@ -3,18 +3,43 @@ import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/article';
 
-const Articles = (props) => {
+import { 
+    Grid, 
+    Paper,
+    withStyles 
+} from '@material-ui/core';
+
+import ArticlesForm from './articlesForm';
+
+const styles = theme => ({
+    paper: {
+        margin: theme.spacing(3),
+        padding: theme.spacing(2)
+    }
+});
+
+const Articles = ({classes, ...props}) => {
     // const [x, setX] = useState(0);
     // setX(5);
 
     useEffect(() => {
-
+        props.fetchAllArticles()
     }, []); // Similar to class' "ComponentDidMount"
 
     return(
-        <div>
-            <h1>Testing Article List Component</h1>
-        </div>
+        <Grid container>
+            <Grid item xs={5}>
+                <Paper className={classes.paper}>
+                    <ArticlesForm />
+                </Paper>
+            </Grid>
+
+            <Grid item xs={7}>
+                <Paper className={classes.paper}>
+                    <div>List of Articles</div>
+                </Paper>
+            </Grid>
+        </Grid>
     );
 };
 
@@ -28,4 +53,4 @@ const mapActionToProps = {
 };
 //props.fetchAllArticles
 
-export default connect(mapStateToProps, mapActionToProps)(Articles);
+export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(Articles));
