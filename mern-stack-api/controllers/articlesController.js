@@ -12,4 +12,19 @@ router.get('/', (req, res)=>{
     });
 });
 
+router.post('/', (req, res)=>{
+    var newRecord = {
+        title: req.body.title,
+        content: req.body.content
+    };
+
+    newRecord.save((err, doc)=>{
+        if(!err) 
+        res.send(docs);
+        else
+        console.log('Error while creating new record: ' + JSON.stringify(err, undefined, 2));
+    });
+});
+
+
 module.exports = router;
