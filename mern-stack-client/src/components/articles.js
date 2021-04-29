@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Fragment} from 'react';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions/article';
 
 import { 
+    Divider,
     Grid, 
     List, 
     ListItem, 
@@ -44,17 +45,19 @@ const Articles = ({classes, ...props}) => {
                         {
                             props.articleList.map((record, index) => {
                                 return(
-                                    <ListItem>
-                                        <ListItemText>
-                                            <Typography variant="h5">
-                                                { record.title }
-                                            </Typography>
-
-                                            <div>
-                                                { record.content }
-                                            </div>
-                                        </ListItemText>
-                                    </ListItem>
+                                    <Fragment key={index}>
+                                        <ListItem>
+                                            <ListItemText>
+                                                <Typography variant="h5">
+                                                    { record.title }
+                                                </Typography>
+                                                <div>
+                                                    { record.content }
+                                                </div>
+                                            </ListItemText>
+                                        </ListItem>
+                                        <Divider component="li" />
+                                    </Fragment>
                                 )
                             })
                         }
