@@ -17,12 +17,12 @@ router.get('/', (req, res) => {
 
 // POST REQUEST:
 router.post('/', (req, res) => {
-    var newRecord = {
+    var newRecord = new Article ({
         title: req.body.title,
         content: req.body.content
-    };
+    });
 
-    newRecord.save((err, doc) => {
+    newRecord.save((err, docs) => {
         if (!err) 
             res.send(docs);
         else
@@ -40,7 +40,7 @@ router.put('/:id', (req, res) => {
         content: req.body.content
     };
 
-    Article.findByIdAndUpdate(req.params.id, {$set:updatedRecord}, (err, doc) => {
+    Article.findByIdAndUpdate(req.params.id, {$set:updatedRecord}, {new:true}, (err, docs) => {
         if (!err)
             res.send(docs);
         else
@@ -53,7 +53,7 @@ router.delete('/:id', (req, res) => {
     if (!objectID.isValid(req.params.id))
         return res.status(400).send('No record with given ID: ' + req.params.id);
 
-    Article.findByIdAndRemove(req.params.id, (err, doc) => {
+    Article.findByIdAndRemove(req.params.id, (err, docs) => {
         if (!err)
             res.send(docs);
         else
