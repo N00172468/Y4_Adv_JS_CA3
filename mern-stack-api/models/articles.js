@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-var articles = mongoose.model('articles',
+var Article = mongoose.model('Article',
 {
     title: {type : String},
     body: {type : String},
 });
 
-module.exports = {articles};
+module.exports = {Article};
