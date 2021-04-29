@@ -26,6 +26,15 @@ const styles = theme => ({
 
 const ArticlesForm = ({classes, ...props}) => {
     const [values, setValues] = useState(initialFieldValues);
+    
+    const handleInputChange = e => {
+        const {name, value} = e.target
+        
+        setValues({
+            ...value,
+            [name]: value
+        });
+    }
 
     return(
         // Back-ticks are used to be able to call multiple classes
@@ -36,6 +45,7 @@ const ArticlesForm = ({classes, ...props}) => {
                 label="Title"
                 fullWidth
                 value={values.title}
+                onChange={handleInputChange}
             />
 
             <TextField
@@ -46,6 +56,7 @@ const ArticlesForm = ({classes, ...props}) => {
                 multiline
                 rows="5"
                 value={values.content}
+                onChange={handleInputChange}
             />
         </form>
     );
