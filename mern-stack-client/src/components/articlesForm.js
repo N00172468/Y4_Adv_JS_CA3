@@ -1,5 +1,8 @@
 import React, {useEffect, useState, Fragment} from 'react';
 
+import {connect} from 'react-redux';
+import * as actions from '../actions/article';
+
 import { 
     Button,
     TextField,
@@ -57,8 +60,13 @@ const ArticlesForm = ({classes, ...props}) => {
         e.preventDefault();
         console.log(values);
 
-        if (validate())
-            window.alert('Validation Succeeded!');
+        const onSuccess = () => {
+            window.alert('Submit Successful!');
+        }
+
+        if (validate()) {
+            props.createArticle(values, onSuccess)
+        }
     }
 
     return(
@@ -99,4 +107,14 @@ const ArticlesForm = ({classes, ...props}) => {
     );
 };
 
-export default withStyles(styles)(ArticlesForm);
+// -------- Mapping Functions: --------
+const mapStateToProps = state => ({
+    articleList: state.article.list
+});
+
+const mapActionToProps = {
+    createArticle: actions.create,
+    updateArticle: actions.update
+};
+
+export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(ArticlesForm));
