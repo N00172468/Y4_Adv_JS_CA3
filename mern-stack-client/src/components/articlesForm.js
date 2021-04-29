@@ -5,6 +5,8 @@ import {
     withStyles
  } from '@material-ui/core';
 
+ import useForm from './useForm';
+
 const initialFieldValues = {
     title: '',
     content: ''
@@ -25,16 +27,11 @@ const styles = theme => ({
 });
 
 const ArticlesForm = ({classes, ...props}) => {
-    const [values, setValues] = useState(initialFieldValues);
-    
-    const handleInputChange = e => {
-        const {name, value} = e.target
-        
-        setValues({
-            ...value,
-            [name]: value
-        });
-    }
+    var {
+        values,
+        setValues,
+        handleInputChange
+    } = useForm(initialFieldValues);
 
     return(
         // Back-ticks are used to be able to call multiple classes
