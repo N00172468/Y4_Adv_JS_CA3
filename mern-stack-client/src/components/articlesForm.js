@@ -33,7 +33,15 @@ const styles = theme => ({
 const ArticlesForm = ({classes, ...props}) => {
     // Validation Function:
     const validate = () => {
+        let temp = {...errors}
         
+        temp.title = values.title?"":"A title is required!"
+        temp.content = values.content?"":"Contents are required!"
+
+        setErrors({
+            ...temp
+        });
+        return Object.values(temp).every(x => x == "");
     };
 
     // Using "UseForm" component to call out reusable form operations:
@@ -48,6 +56,9 @@ const ArticlesForm = ({classes, ...props}) => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log(values);
+
+        if (validate())
+            window.alert('Validation Succeeded!');
     }
 
     return(
@@ -60,6 +71,7 @@ const ArticlesForm = ({classes, ...props}) => {
                 fullWidth
                 value={values.title}
                 onChange={handleInputChange}
+                {...(errors.title && {error:true, helperText:errors.title})} // Material UI error display method using "validate" funct. above
             />
 
             <TextField
@@ -71,6 +83,7 @@ const ArticlesForm = ({classes, ...props}) => {
                 rows="5"
                 value={values.content}
                 onChange={handleInputChange}
+                {...(errors.content && {error:true, helperText:errors.content})}
             />
 
             <Button
