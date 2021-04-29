@@ -7,7 +7,8 @@ export const ACTION_TYPES = {
     FETCH_ALL: 'FETCH_ALL'
 }
 
-// React Action via Redux-Thunk
+// -------- React Action via Redux-Thunk: --------
+// Fetch All Data Operation:
 export const fetchAll = () => dispatch => {
     //  Get req.
     api.article().fetchAll()
@@ -22,9 +23,41 @@ export const fetchAll = () => dispatch => {
     .catch(err => console.log(err));
 }
 
-// const fetchAll = {
-//     type: 'FETCH_ALL',
-//     payload: []
-// }
+// Create Operation:
+export const create = (data, onSuccess) => dispatch => {
+    api.article().create(data)
+    .then(res => {
+        dispatch({
+            type: ACTION_TYPES.CREATE,
+            payload: res.data
+        });
+        onSuccess();
+    })
+    .catch(err => console.log(err));
+};
 
-// dispatch(fetchAll)
+// Update Operation:
+export const update = (id, data, onSuccess) => dispatch => {
+    api.article().put(id, data)
+    .then(res => {
+        dispatch({
+            type: ACTION_TYPES.UPDATE,
+            payload: res.data
+        });
+        onSuccess();
+    })
+    .catch(err => console.log(err));
+};
+
+// Delete Operation:
+export const remove = (id, onSuccess) => dispatch => {
+    api.article().delete(id)
+    .then(res => {
+        dispatch({
+            type: ACTION_TYPES.DELETE,
+            payload: id
+        });
+        onSuccess();
+    })
+    .catch(err => console.log(err));
+};
