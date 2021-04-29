@@ -1,3 +1,5 @@
+import api from 'api.js';
+
 export const ACTION_TYPES = {
     CREATE: 'CREATE',
     UPDATE: 'UPDATE',
@@ -8,10 +10,14 @@ export const ACTION_TYPES = {
 // React Action via Redux-Thunk
 export const fetchAll = () => dispatch => {
     //  Get req.
-    dispatch({
-        type: ACTION_TYPES.FETCH_ALL,
-        payload: []
-    });
+    api.article().fetchAll()
+    .then(res => {
+        dispatch({
+            type: ACTION_TYPES.FETCH_ALL,
+            payload: res.data
+        });
+    })
+    .catch(err => console.log(err));
 }
 
 // const fetchAll = {
