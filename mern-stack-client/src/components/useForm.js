@@ -1,6 +1,6 @@
 import React, {useEffect, useState, Fragment} from 'react';
 
-const useForm = (initialFieldValues) => {
+const useForm = (initialFieldValues, setCurrentId) => {
     const [values, setValues] = useState(initialFieldValues);
     const [errors, setErrors] = useState({}); // Returning empty object
     
@@ -10,13 +10,20 @@ const useForm = (initialFieldValues) => {
             ...values,
             [name]: value
         });
-    }
+    };
+
+    const resetForm = () => {
+        setValues(initialFieldValues)
+        setErrors({})
+        setCurrentId(0)
+    };
 
     return {
         values,
         setValues,
         errors,
         setErrors,
+        resetForm,
         handleInputChange
     };
 }
