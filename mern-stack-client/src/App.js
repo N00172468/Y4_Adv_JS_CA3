@@ -1,15 +1,12 @@
 import './App.css';
-
 import { Provider } from 'react-redux';
 import { store } from './actions/store'; 
-
 import {
   Container, 
   AppBar, 
   Typography 
 } from '@material-ui/core';
 import ButterToast, {POS_CENTER, POS_BOTTOM} from 'butter-toast';
-
 import Articles from './components/articles';
 
 function App() {
@@ -18,7 +15,7 @@ function App() {
       <Container maxWidth="lg">
         <AppBar position="static" color="inherit">
           <Typography
-            variant="h2"
+            variant="h3"
             align="center"
           >
             Articles
