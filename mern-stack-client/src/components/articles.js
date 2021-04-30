@@ -11,6 +11,7 @@ import {
     ListItemText, 
     Paper,
     Typography,
+    Button,
     withStyles 
 } from '@material-ui/core';
 
@@ -20,6 +21,12 @@ const styles = theme => ({
     paper: {
         margin: theme.spacing(3),
         padding: theme.spacing(2)
+    },
+    smMargin: {
+        margin: theme.spacing(1)
+    },
+    actionDiv: {
+        textAlign: 'end'
     }
 });
 
@@ -53,6 +60,26 @@ const Articles = ({classes, ...props}) => {
                                                 </Typography>
                                                 <div>
                                                     { record.content }
+                                                </div>
+
+                                                <div className={classes.actionDiv}>
+                                                    <Button
+                                                        variant="contained"
+                                                        color="primary"
+                                                        size="small"
+                                                        className={classes.smMargin}
+                                                    >
+                                                        Edit
+                                                    </Button>
+                                                    
+                                                    <Button
+                                                        variant="contained"
+                                                        color="secondary"
+                                                        size="small"
+                                                        className={classes.smMargin}
+                                                    >
+                                                        Delete
+                                                    </Button>
                                                 </div>
                                             </ListItemText>
                                         </ListItem>
