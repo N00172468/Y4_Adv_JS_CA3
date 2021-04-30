@@ -14,6 +14,8 @@ import {
     Button,
     withStyles 
 } from '@material-ui/core';
+import {DeleteSweep} from '@material-ui/icons';
+import ButterToast, {Cinnamon} from 'butter-toast';
 
 import ArticlesForm from './articlesForm';
 
@@ -36,6 +38,18 @@ const Articles = ({classes, ...props}) => {
     useEffect(() => {
         props.fetchAllArticles()
     }, []); // Similar to class' "ComponentDidMount"
+
+    const onDelete = id => {
+        const onSuccess = () => {
+            // window.alert('Submit Successful!');
+            ButterToast.raise({
+                content:<Cinnamon.Crisp title="Article" content="Deleted Successfully" scheme={Cinnamon.Crisp.SCHEME_PURPLE} icon={DeleteSweep}/>
+            });
+        }
+
+        if (window.confirm('Are you sure?'))
+            props.deleteArticles(id, onSuccess);
+    }
 
     return(
         <Grid container>
@@ -77,6 +91,7 @@ const Articles = ({classes, ...props}) => {
                                                         color="secondary"
                                                         size="small"
                                                         className={classes.smMargin}
+                                                        onClick={()=>onDelete(record._id)}
                                                     >
                                                         Delete
                                                     </Button>
@@ -101,7 +116,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionToProps = {
-    fetchAllArticles: actions.fetchAll
+    fetchAllArticles: actions.fetchAll,
+    deleteArticles: actions.remove
 };
 //props.fetchAllArticles
 

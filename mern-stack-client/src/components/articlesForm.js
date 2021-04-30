@@ -79,6 +79,7 @@ const ArticlesForm = ({classes, ...props}) => {
             ButterToast.raise({
                 content:<Cinnamon.Crisp title="Article" content="Submitted Successfully" scheme={Cinnamon.Crisp.SCHEME_PURPLE} icon={AssignmentTurnedIn}/>
             });
+            resetForm();
         }
 
         if (validate()) {
