@@ -1,8 +1,6 @@
 import React, {useEffect, useState, Fragment} from 'react';
-
 import { connect } from 'react-redux';
 import * as actions from '../actions/article';
-
 import { 
     Divider,
     Grid, 
@@ -16,7 +14,6 @@ import {
 } from '@material-ui/core';
 import {DeleteSweep} from '@material-ui/icons';
 import ButterToast, {Cinnamon} from 'butter-toast';
-
 import ArticlesForm from './articlesForm';
 
 const styles = theme => ({
@@ -119,6 +116,5 @@ const mapActionToProps = {
     fetchAllArticles: actions.fetchAll,
     deleteArticles: actions.remove
 };
-//props.fetchAllArticles
 
 export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(Articles));
