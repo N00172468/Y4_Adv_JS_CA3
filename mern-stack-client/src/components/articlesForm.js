@@ -1,8 +1,6 @@
-import React, {useEffect, useState, Fragment} from 'react';
-
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/article';
-
 import { 
     Button,
     TextField,
@@ -10,7 +8,6 @@ import {
  } from '@material-ui/core';
  import {AssignmentTurnedIn} from '@material-ui/icons';
  import ButterToast, {Cinnamon} from 'butter-toast';
-
  import useForm from './useForm';
 
 const initialFieldValues = {
@@ -21,8 +18,7 @@ const initialFieldValues = {
 const styles = theme => ({
     root: {
         '& .MuiTextField-root': {
-            margin: theme.spacing(1),
-            // width: 200
+            margin: theme.spacing(1)
         }
     },
     form: {
