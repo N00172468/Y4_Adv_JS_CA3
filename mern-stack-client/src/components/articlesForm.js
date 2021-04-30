@@ -78,7 +78,11 @@ const ArticlesForm = ({classes, ...props}) => {
         }
 
         if (validate()) {
-            props.createArticle(values, onSuccess);
+            // If current ID doesn't exist, CREATE new article, else EDIT chosen article:
+            if (props.currentId == 0)
+                props.createArticle(values, onSuccess);
+            else
+                props.updateArticle(props.currentId, values, onSuccess);
         }
     }
 
