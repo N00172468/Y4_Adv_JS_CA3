@@ -70,7 +70,7 @@ const ArticlesForm = ({classes, ...props}) => {
         }
 
         if (validate()) {
-            props.createArticle(values, onSuccess)
+            props.createArticle(values, onSuccess);
         }
     }
 
