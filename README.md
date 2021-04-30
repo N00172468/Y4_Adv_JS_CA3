@@ -6,5 +6,10 @@
 
 ---
 
-- A full-stack web app (MERN Stack) with CRUD functionalities.
-- Included is a hand-built api using Mongoose, Express, Node and Redux.
+- A basic full-stack web app (MERN Stack) with CRUD functionalities to demonstrate the student's ability to:
+    - Build the server-side using Mongoose, Express, Node and Redux.
+    - Connecting server (Database: MongoDB) with client.
+    - Build middleware and routing.
+    - Create authentication.
+    - Create error handling.
+    - Build the client-side using React hooks and demonstrate state management. 
