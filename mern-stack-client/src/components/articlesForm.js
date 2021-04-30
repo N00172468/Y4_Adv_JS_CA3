@@ -8,6 +8,8 @@ import {
     TextField,
     withStyles
  } from '@material-ui/core';
+ import {AssignmentTurnedIn} from '@material-ui/icons';
+ import ButterToast, {Cinnamon} from 'butter-toast';
 
  import useForm from './useForm';
 
@@ -61,7 +63,10 @@ const ArticlesForm = ({classes, ...props}) => {
         console.log(values);
 
         const onSuccess = () => {
-            window.alert('Submit Successful!');
+            // window.alert('Submit Successful!');
+            ButterToast.raise({
+                content:<Cinnamon.Crisp title="Article" content="Submitted Successfully" scheme={Cinnamon.Crisp.SCHEME_PURPLE} icon={AssignmentTurnedIn}/>
+            });
         }
 
         if (validate()) {

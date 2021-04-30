@@ -8,6 +8,7 @@ import {
   AppBar, 
   Typography 
 } from '@material-ui/core';
+import ButterToast, {POS_CENTER, POS_BOTTOM} from 'butter-toast';
 
 import Articles from './components/articles';
 
@@ -25,6 +26,8 @@ function App() {
         </AppBar>
         
         <Articles />
+
+        <ButterToast position={{vertical:POS_BOTTOM, horizontal:POS_CENTER}} />
       </Container>
     </Provider>
   );
