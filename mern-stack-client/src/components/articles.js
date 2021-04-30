@@ -31,8 +31,7 @@ const styles = theme => ({
 });
 
 const Articles = ({classes, ...props}) => {
-    // const [x, setX] = useState(0);
-    // setX(5);
+    const [currentId, setCurrentId] = useState(0);
 
     useEffect(() => {
         props.fetchAllArticles()
@@ -42,7 +41,7 @@ const Articles = ({classes, ...props}) => {
         <Grid container>
             <Grid item xs={5}>
                 <Paper className={classes.paper}>
-                    <ArticlesForm />
+                    <ArticlesForm {...{currentId, setCurrentId}} />
                 </Paper>
             </Grid>
 
@@ -68,6 +67,7 @@ const Articles = ({classes, ...props}) => {
                                                         color="primary"
                                                         size="small"
                                                         className={classes.smMargin}
+                                                        onClick={()=>setCurrentId(record._id)}
                                                     >
                                                         Edit
                                                     </Button>

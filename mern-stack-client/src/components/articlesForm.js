@@ -36,6 +36,14 @@ const styles = theme => ({
 });
 
 const ArticlesForm = ({classes, ...props}) => {
+    // Displaying the selected article for edit in the form:
+    useEffect(() => {
+        if (props.currentId != 0)
+            setValues({
+                ...props.articleList.find(x => x._id == props.currentId)
+            });
+    }, [props.currentId]);
+
     // Validation Function:
     const validate = () => {
         let temp = {...errors}
